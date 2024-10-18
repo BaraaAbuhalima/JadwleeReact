@@ -14,8 +14,7 @@
   "build": {
     "files": [
       "./index.js",
-      "./src/**/*",
-      "node_modules/**/*"
+      "./src/**/*"
     ],
     "appId": "com.jadwlee.jadwlee",
     "productName": "Jadwlee APP",
@@ -42,6 +41,7 @@
   },
   "dependencies": {
     "electron-is-dev": "^3.0.1",
+    "electron-log": "^5.2.0",
     "electron-squirrel-startup": "^1.0.1",
     "electron-updater": "^6.3.9",
     "fs": "^0.0.1-security",

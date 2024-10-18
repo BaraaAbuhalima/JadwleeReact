@@ -7,6 +7,19 @@ const getSchedule = require("./src/getSchedule.cjs");
 const saveToFile = require("./src/saveCloudflareCookie.cjs");
 const startRegistering = require("./src/startRegistering.cjs");
 const { autoUpdater, AppUpdater } = require("electron-updater");
+const log = require("electron-log");
+
+autoUpdater.logger = log;
+autoUpdater.checkForUpdatesAndNotify();
+
+autoUpdater.on("update-available", () => {
+  log.info("Update available.");
+});
+
+autoUpdater.on("update-downloaded", () => {
+  log.info("Update downloaded. Will install now");
+  autoUpdater.quitAndInstall();
+});
 // const isDev = require("electron-is-dev");
 // Enable electron-reload
 // require("electron-reload")(path.join(__dirname), {
@@ -31,12 +44,13 @@ const createWindow = () => {
   const startURL = "http://localhost:3000";
   // : `file://${path.join(__dirname, "./app/dist/index.html")}`;
 
-  window.loadURL(startURL);
-  // const indexPath = join(__dirname, "app", "dist", "index.html");
-  // window.loadFile("./app/dist/index.html");
+  // window.loadURL(startURL);
+  // // const indexPath = join(__dirname, "app", "dist", "index.html");
+  // window.loadFile(join(__dirname, "../JadwleeExpress/index.html"));
+  // // window.loadFile("./app/dist/index.html");
   window.on("ready-to-show", window.show);
   // window.webContents.openDevTools();
-  // window.loadURL("http://localhost:3000/");
+  window.loadURL("http://localhost:3000");
 };
 
 app.whenReady().then(() => {
